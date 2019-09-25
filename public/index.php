@@ -11,6 +11,7 @@
     <script>
         let grid_size = 8;
         let tile_size = 20;
+        let $canvas = $('#grid');
 
         let canvas_size = grid_size * tile_size;
         let colors = {
@@ -78,7 +79,7 @@
 
 
             //todo: draw function - loops through each of the indexes and runs the draw function on each new element.
-            obj.draw = function(obj.ctx) {
+            obj.draw = function() {
                 for(let x=0;x<grid.length;x++) {
                     for(let y=0; y < grid[x].length;y++) {
                         grid[x][y].draw(obj.ctx);
