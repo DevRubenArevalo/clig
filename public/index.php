@@ -37,6 +37,14 @@
                 p4: y * tile_size + tile_size
             };
 
+            obj.draw = function(context) {
+                context.fillStyle = obj.fillStyle;
+                context.fillRect = obj.fillStyle;
+                // ctx.fillStyle = 'rgb(200, 0, 0)';
+                // ctx.fillRect(10, 10, 50, 50);
+
+            };
+
             return obj;
         }
 
@@ -48,27 +56,37 @@
 
 
 
-        if (canvas.getContext) {
-            let ctx = canvas.getContext('2d');
-            // drawing code here
-            // ctx.fillStyle = 'rgb(200, 0, 0)';
-            // ctx.fillRect(10, 10, 50, 50);
-            //
-            // ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-            // ctx.fillRect(30, 30, 50, 50);
-        } else {
-            alert('Nah dude canvas does not work.');
-            // canvas-unsupported code here
-        }
 
-        function Grid(grid) {
-            let $canvas = $('#grid');
+
+        function newGrid(grid) {
             let canvas = document.getElementById('grid');
             const obj = {};
-            //todo: draw function - loops through each of the indexes and runs the draw function on each new element.
-            obj.draw = function() {
 
+            if (canvas.getContext) {
+                obj.ctx = canvas.getContext('2d');
+
+                // drawing code here
+                // ctx.fillStyle = 'rgb(200, 0, 0)';
+                // ctx.fillRect(10, 10, 50, 50);
+                //
+                // ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+                // ctx.fillRect(30, 30, 50, 50);
+            } else {
+                alert('Nah dude canvas does not work.');
+                // canvas-unsupported code here
+            }
+
+
+            //todo: draw function - loops through each of the indexes and runs the draw function on each new element.
+            obj.draw = function(obj.ctx) {
+                for(let x=0;x<grid.length;x++) {
+                    for(let y=0; y < grid[x].length;y++) {
+                        grid[x][y].draw(obj.ctx);
+                    }
+                }
             };
+
+
         }
 
         // Initialize array
